@@ -1,0 +1,21 @@
+git init会使所在文件夹变成一个git的工厂;
+git add xx.txt 会把该文件添加到git的暂存区中;
+git add .会把文件夹中所有的文件添加到暂存区中;
+git status 可查询文件的状态;
+git commit -m "" 引号中放文件的版本,可将暂存区中的文件放入工厂中,此时暂存区中的文件会自动消除;
+git log 可以查询文件版本;
+git reset --hard HEAD~1 还原到第一个版本;
+git reset --hard HEAD 还原到最新版本;
+git reset --hard HEAD^^ 还原到上一个版本;
+git reset --hard HEAD xxxxxxxxxxxxxxxxxxxxxxxxx  加上版本Hash码可以还原到想要的版本内容;
+工厂中只会保存暂存区中的内容,如果add .提交到暂存区了,只会再来修改文件的内容,之后commit工厂并不会显示修改过的内容；
+可以进行两次提交
+git checkout xx.txt 可以将没有提交到暂存区中内容移除；
+git reset HEAD xx.txt可以将最新提交到暂存区中的内容改为没有提交，并用git checkout xx.txt；
+git diff比较文件是否一样；
+git ls-files 显示文件夹中所有的文件；
+git rm xx.txt 直接从版本库里删除版本；
+*git remote add origin http://xxxxxxxxxxxxxxxxxxxxxxxxxxxxx 把当前的本机工厂添加到远程工厂；
+*git push origin master 把文件上传到远程工厂；//和上一个命令是一起的；
+^git clone http://xxxxxxxxxxxxxxxxxx 获取远程工厂的资源；
+^git pull origin master 把别人在远程工厂的东西下载下来；//和上一个命令是一起的；
