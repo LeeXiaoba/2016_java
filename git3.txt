@@ -29,3 +29,41 @@ git hash-object xx.txt 可以查询文件内容的hash码，如果一样的文件执行add .不会添加
 git cat-file -p master 可以查询最新一个版本的commit组件；
 git cat-file -p master xxxxxxxxxxxxxxx x为commit组件版本,可以查询commit组件的tree组件；
 git cat-file -p master xxxxxxxxxxxxxxx x为tree组件版本，可以查询tree组件里面的文件和它的blob；
+mkdir xx 创建文件夹；
+win10 可以用touch xx 创建文件，win8只能在文件夹中手动创建了；
+type xx可以查看文件的内容；
+git status -s和git status类似，只是状态用？或 A 或者其他字母表示，红色是没有在暂存区中，绿色表示在暂存区中；
+git add看添加的不同文件内容，有几个不同内容，就生成几个blob组件，git commit -u ""进行几次commit就生成几个commit组件，
+件，然后看comiit提交的有几个不同的文件夹，有几个就生成几个tree组件，如果提交的没有文件夹，也会生成一个tree组件；
+如果commit了一次，如果有上一次提交，就会有parent组件，parent组件就是上一次提交的commit组件，当git cat-fi
+le -p tree组件的hash码时会看到一个tree组件，但这个并不是新生成的组件，而是原来的组件；
+rm xx.txt是从文件夹中删除文件，但是版本库里还是有这个文件的，所有git ls-files 可以看到这个文件；
+git所管理的文件夹总共有四个状态：
+untrack状态：完全没被git管理的状态，未检索的状态，也是没有add的状态；
+unmodify状态：就是add了的状态，处在暂存区中的状态；
+modify状态：就是修改了，但是还没有add的状态，也是不再暂存区中的状态；
+stage状态：就是处在版本库(或者在本机工厂的状态)，commit之后的状态；
+git reset --hard xxxxxxxxxxxxxxxxxx也可以撤销暂存区版本的提交；
+git rm xx.txt从版本库和文件夹里删除文件；
+git rm --cached xx.txt就是从版本库里删除文件，而文件夹里面有，但用git ls-files看不到，因为这个命令是看版本库里
+的文件；执行git rm --cached xx.txt之后，版本库里没有了，但是tree组件里还有，这个是用来还原的，现在文件处于准备删
+除的状态，此时，如果commit提交之后 a.txt就会被删除，但是发现文件夹中还在有a.txt，但是这个git认为这个文件和刚
+刚删除的那个文件没有关系，如果执行git add .然后有执行git status 命令提示符里会说new file；
+git mv xx.txt xxx.txt文件的更名；
+每一个细节的变动如果都进行一次提交，那么每一次变动都会进行还原，如果每次提交能找到对应的版本的话；
+如果删除了一个版本，然后命令提示符又被不小心关掉的话，可以去所在文件夹中，点开隐藏文件夹git，然后点开文
+件夹logs，里面可以看到一个HEAD文件，里面存着所有操作的版本，所以就不用担心还原了；
+如果觉得打开文件夹很麻烦，也可以执行git reflog，也可以在命令提示符里看到所有的版本，这个时候执行git reset --hard
+HEAD@{}就可以回到想要的版本；
+git branch 查看有几个分支；
+win10可以用re -rf xx在命令提示符里面删除文件夹；
+git branch xx可以建分支；
+*指着哪个分支就表示在哪个分支之中，切换分支的命令是git checkout xx;
+建了分支，代码是属于主分支的，但是分支也拥有主分支的版本（代码）；
+如果在分支上面添加东西，主分支在合并之前是没有分支的内容的；
+然后切换到主分支上进行添加，这时并不会添加分支上的东西；
+git checkout -b xx表示创建一个分支 并且把它切换到这个分支上；
+git merge xxx 在当前分支(或者主分支上)合并；
+git branch -d xxx删除分支；
+echo xxx > xx.txt这个表示替换文件里面的内容；
+echo xxx >> xx.txt这个表示添加东西到文件里，原文件的内容不会被替换；
